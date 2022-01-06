@@ -3,12 +3,11 @@ module.exports = async (sequelize, Sequelize) => {
     return await sequelize.define("users", {
         user_id: {
             type: Sequelize.UUID,
-            defaultValue: Sequelize.UUID(),
-            allowNull: false,
-            primaryKey: true
+			defaultValue: Sequelize.UUIDV4(),
+			primaryKey: true,
         },
         user_login: {
-            type: Sequelize.String(64), 
+            type: Sequelize.STRING(64), 
             allowNull: false
         },
         user_password: {

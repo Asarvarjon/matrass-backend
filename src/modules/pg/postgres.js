@@ -1,4 +1,6 @@
 const { Sequelize } = require("sequelize");
+const UserModel = require("../../models/UserModel");
+const init = require("./init");
 
 
 if(!process.env.PG_URL) {
@@ -16,7 +18,12 @@ module.exports = async function pg() {
 
         let db = {};
 
+        db.users = await UserModel(sequelize, Sequelize);
+
         await sequelize.sync({ force: false });
+
+        await init(db)
+
         return db;
     } catch (error) {
         console.log(`POSTGRES ERROR ${error.message}`);
