@@ -1,5 +1,4 @@
 
-
 module.exports = async (sequelize, Sequelize) => {
     return await sequelize.define("users", {
         user_id: {
