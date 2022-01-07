@@ -11,8 +11,13 @@ module.exports = async (sequelize, Sequelize) => {
             allowNull: false
         },
         customer_number: {
-            type: Sequelize.STRING(12),
+            type: Sequelize.STRING(),
             allowNull: false, 
+        },
+        contacted: {
+            type: Sequelize.STRING(),
+            defaultValue: false,
+            allowNull: false
         }
     })
 }
