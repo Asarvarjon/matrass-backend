@@ -11,5 +11,5 @@ module.exports = async function(db) {
             name: "user_id",
             allownull: false
         }
-    })
+    })  
 }

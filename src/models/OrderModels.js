@@ -2,7 +2,7 @@ module.exports = async (sequelize, Sequelize) => {
     return await sequelize.define("orders", {
         order_id: {
             type: Sequelize.UUID,
-            defaultValue: Sequelize.UUID(),
+            defaultValue: Sequelize.UUIDV4(),
             allowNull: false,
             primaryKey: true
         },
