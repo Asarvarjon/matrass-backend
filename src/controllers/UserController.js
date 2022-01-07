@@ -22,7 +22,7 @@ module.exports = class UserController {
             )
 
             if(!isTrue) {
-                throw new res.error("Parolingiz xato")
+                throw new res.error(404, "Parolingiz xato")
             }
 
             await req.db.sessions.destroy({
@@ -35,9 +35,9 @@ module.exports = class UserController {
             const session = await req.db.sessions.create({
                 session_user_agent: req.headers["user-agent"] || "Unknown",
                 user_id: admin.user_id
-            })
+            }); 
 
-            const token = createToken({
+            const token = await createToken({
                 session_id: session.dataValues.session_id
             });
 
