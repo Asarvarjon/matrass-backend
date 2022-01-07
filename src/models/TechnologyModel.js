@@ -19,7 +19,7 @@ module.exports = async (sequelize, Sequelize) => {
             allowNull: false 
         },
         technology_description: {
-            type: Sequelize.STRING(), 
+            type: Sequelize.TEXT(), 
             allowNull: false 
         },
         technology_status:{
