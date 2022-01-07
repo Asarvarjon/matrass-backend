@@ -16,9 +16,7 @@ module.exports = async function AuthMiddleware(req, res, next) {
                 model: req.db.users
             },
             raw: true
-        })
-
-        console.log(sessios);
+        }) 
 
         if(!session) throw new res.error(401, "Unauthorized")
 
