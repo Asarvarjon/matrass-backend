@@ -1,4 +1,5 @@
 const { Sequelize } = require("sequelize");
+const CustomersModel = require("../../models/CustomersModel");
 const Relations = require("../../models/Relations");
 const SessionsModel = require("../../models/SessionsModel");
 const UserModel = require("../../models/UserModel");
@@ -21,7 +22,8 @@ module.exports = async function pg() {
         let db = {};
 
         db.users = await UserModel(sequelize, Sequelize);
-        db.sessions = await SessionsModel(sequelize, Sequelize)
+        db.sessions = await SessionsModel(sequelize, Sequelize);
+        db.customers = await CustomersModel(sequelize, Sequelize)
 
         await Relations(db)
         await sequelize.sync({ force: false });
