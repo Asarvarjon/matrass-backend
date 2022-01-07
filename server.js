@@ -23,6 +23,12 @@ async function server() {
         // important middlewares
         app.use(cors())
         app.use(express.json()) 
+
+        app.use(async(req, res, next) => {
+            req.db = db;
+            next()
+        } )
+        
         app.use(express.urlencoded({
             extended: true
         }));
