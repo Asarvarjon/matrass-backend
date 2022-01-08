@@ -29,9 +29,7 @@ async function server() {
             next()
         } )
         
-        app.use(express.urlencoded({
-            extended: true
-        }));
+        app.use(express.urlencoded({extended: true}))
 
         app.use(customErrorMiddleware)
         app.use("/v1", Routes)

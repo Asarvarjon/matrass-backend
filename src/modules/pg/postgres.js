@@ -1,6 +1,7 @@
 const { Sequelize } = require("sequelize");
 const CategoriesModel = require("../../models/CategoriesModel");
 const CustomersModel = require("../../models/CustomersModel");
+const LocationModel = require("../../models/LocationModel");
 const Relations = require("../../models/Relations");
 const SessionsModel = require("../../models/SessionsModel");
 const TechnologyModel = require("../../models/TechnologyModel");
@@ -27,7 +28,8 @@ module.exports = async function pg() {
         db.sessions = await SessionsModel(sequelize, Sequelize);
         db.customers = await CustomersModel(sequelize, Sequelize);
         db.categories = await CategoriesModel(sequelize, Sequelize);
-        db.technologies = await TechnologyModel(sequelize, Sequelize)
+        db.technologies = await TechnologyModel(sequelize, Sequelize);
+        db.locations = await LocationModel(sequelize, Sequelize);
 
         await Relations(db)
         await sequelize.sync({ force: false });
