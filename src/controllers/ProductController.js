@@ -14,7 +14,7 @@ module.exports = class ProductController{
                     }
                 ]
             }) 
-            
+
             res.status(201).json({
                 ok: true,
                 message: "Products",
@@ -110,7 +110,7 @@ module.exports = class ProductController{
 
     static async ProductUpdateController(req, res, next) {
         try {
-            const product_id = req.params.product_id;
+            const product_id = req.params.product_id; 
 
             const product = await req.db.products.findOne({
                 where: {
@@ -120,7 +120,7 @@ module.exports = class ProductController{
             });
 
             if(!product) throw new res.error(400, "Product is not found!");
-
+ 
             const data = await ProductCreatValidations(req.body, res.error);
             let photos = req.files.photos;
 
@@ -153,6 +153,7 @@ module.exports = class ProductController{
                 message: "Updated succesfully!"
             })
         } catch (error) {
+            console.log(error);
             next(error)
         }
     }
