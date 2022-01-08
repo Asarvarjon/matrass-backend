@@ -27,16 +27,15 @@ module.exports = class LocationsController {
             
             const location_id = req.params.location_id;
 
-            const location = req.db.locations.findOne({
+            const location = await req.db.locations.findOne({
                 where: {
                     location_id
                 }, 
                 raw: true
             })
 
-            if(!location) throw new res.error("Location is not found!");
-
-
+            if(!location) throw new res.error(400, "Location is not found!");
+ 
             for(let item of location.location_photo) {
                 fs.unlink(
                     path.join(
