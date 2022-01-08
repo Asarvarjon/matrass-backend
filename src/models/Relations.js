@@ -11,5 +11,19 @@ module.exports = async function(db) {
             name: "user_id",
             allownull: false
         }
-    })  
+    });
+
+    await db.categories.hasMany(db.products, {
+        foreignKey: {
+            name: "category_id",
+            allownull: false
+        }
+    })
+
+    await db.products.belongsTo(db.categories, {
+        foreignKey: {
+            name: "category_id",
+            allownull: false
+        }
+    })
 }

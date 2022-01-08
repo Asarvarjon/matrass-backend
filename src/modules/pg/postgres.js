@@ -30,8 +30,8 @@ module.exports = async function pg() {
         db.customers = await CustomersModel(sequelize, Sequelize);
         db.categories = await CategoriesModel(sequelize, Sequelize);
         db.technologies = await TechnologyModel(sequelize, Sequelize);
-        db.locations = await LocationModel(sequelize, Sequelize);
-        db.projects = await ProductsModel(sequelize, Sequelize);
+        db.locations = await LocationModel(sequelize, Sequelize); 
+        db.products = await ProductsModel(sequelize, Sequelize);
 
         await Relations(db)
         await sequelize.sync({ force: false });

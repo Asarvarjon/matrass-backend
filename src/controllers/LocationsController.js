@@ -70,7 +70,7 @@ module.exports = class LocationsController {
         try {
 
             const data = await LocationCreateValidations(req.body, res.error);
-            let photos = req.files.photos;
+            let photos = req.files?.photos;
 
             if(!Array.isArray(photos)) {
                 photos = [req.files?.photos]
