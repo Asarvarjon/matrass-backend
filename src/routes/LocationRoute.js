@@ -4,6 +4,8 @@ const Authmiddleware = require("../middlewares/AuthMiddleware");
 const expressFileUpload = require("express-fileupload")
 
 const LocationRouter = require("express").Router();
+
+LocationRouter.use(Authmiddleware)
  
 LocationRouter.post("/", expressFileUpload(), LocationCreatePostController)
 LocationRouter.get("/", LocationGetController);

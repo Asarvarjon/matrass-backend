@@ -47,7 +47,10 @@ module.exports = async (sequelize, Sequelize) => {
             type: Sequelize.BOOLEAN(),
             allowNull: false,
             defaultValue: true
-        }
-
+        },
+        product_photo: {
+            type: Sequelize.ARRAY(Sequelize.STRING()),
+            allowNull: false
+        }, 
     })
 }
