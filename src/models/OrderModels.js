@@ -2,25 +2,30 @@ module.exports = async (sequelize, Sequelize) => {
     return await sequelize.define("orders", {
         order_id: {
             type: Sequelize.UUID,
-            defaultValue: Sequelize.UUID(),
+            defaultValue: Sequelize.UUIDV4(),
             allowNull: false,
             primaryKey: true
         },
         user_name: {
-            type: Sequelize.String(64), 
+            type: Sequelize.STRING(64), 
             allowNull: false 
         },
         user_phone: {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        order_category: {
+        order_name: {
             type: Sequelize.STRING,
             allowNull: false,
         },
         order_amount: {
             type: Sequelize.NUMBER,
             allowNull: false,
-        }
+        },
+        order_conteacted: {
+            type: Sequelize.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+        },
     })
 }
