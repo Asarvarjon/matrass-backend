@@ -1,7 +1,7 @@
-const { AdminLoginController } = require("../controllers/UserController");
+const { OrderPostController } = require("../controllers/OrderController");
 
-const UserRouter = require("express").Router();
+const OrderRouter = require("express").Router();
 
-UserRouter.post("/login", AdminLoginController);
+OrderRouter.post("/", OrderPostController);
 
-module.exports = UserRouter;
+module.exports = OrderRouter;
