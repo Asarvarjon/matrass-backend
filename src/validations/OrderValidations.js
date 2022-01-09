@@ -15,13 +15,12 @@ module.exports = class LocationValidations {
       order_name: Joi.string()
         .required()
         .error(new CustomError(400, "Mahsulot nomi noto'g'ri!")),
-      order_amount: Joi.string()
+      order_amount: Joi.number()
         .required()
         .error(new CustomError(400, "Mahsulot soni noto'g'ri!")),
       order_contacted: Joi.string()
         .required()
-        .valid("active", "inactive")
-        .error(new CustomError(400, "Manzil statusi noto'g'ri holatda!")),
+        .error(new CustomError(400, "Mijoz bilan bog'lanish holati noto'gri!")),
     }).validateAsync(data);
   }
 };

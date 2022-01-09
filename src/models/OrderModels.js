@@ -7,7 +7,7 @@ module.exports = async (sequelize, Sequelize) => {
             primaryKey: true
         },
         user_name: {
-            type: Sequelize.STRING(64), 
+            type: Sequelize.STRING, 
             allowNull: false 
         },
         user_phone: {
@@ -19,13 +19,13 @@ module.exports = async (sequelize, Sequelize) => {
             allowNull: false,
         },
         order_amount: {
-            type: Sequelize.NUMBER,
+            type: Sequelize.INTEGER,
             allowNull: false,
         },
         order_contacted: {
             type: Sequelize.BOOLEAN,
             allowNull: false,
-            defaultValue: false,
+            defaultValue: true,
         }
     })
 }

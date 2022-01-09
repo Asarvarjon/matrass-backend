@@ -7,6 +7,7 @@ const Relations = require("../../models/Relations");
 const SessionsModel = require("../../models/SessionsModel");
 const TechnologyModel = require("../../models/TechnologyModel");
 const UserModel = require("../../models/UserModel");
+const OrderModel = require("../../models/OrderModels");
 const init = require("./init");
 
 
@@ -27,13 +28,15 @@ module.exports = async function pg() {
 
         db.users = await UserModel(sequelize, Sequelize);
         db.sessions = await SessionsModel(sequelize, Sequelize);
+        db.orders = await OrderModel(sequelize, Sequelize);
         db.customers = await CustomersModel(sequelize, Sequelize);
         db.categories = await CategoriesModel(sequelize, Sequelize);
         db.technologies = await TechnologyModel(sequelize, Sequelize);
         db.locations = await LocationModel(sequelize, Sequelize); 
         db.products = await ProductsModel(sequelize, Sequelize);
+        
 
-        await Relations(db)
+        await Relations(db);
         await sequelize.sync({ force: false });
 
         await init(db)
