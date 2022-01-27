@@ -5,11 +5,10 @@ const expressFileUpload = require("express-fileupload")
 
 const LocationRouter = require("express").Router();
 
-LocationRouter.use(Authmiddleware)
  
-LocationRouter.post("/", expressFileUpload(), LocationCreatePostController)
+LocationRouter.post("/", [Authmiddleware, expressFileUpload()], LocationCreatePostController)
 LocationRouter.get("/", LocationGetController);
-LocationRouter.put("/:location_id", expressFileUpload(), LocationUpdateController);
-LocationRouter.delete("/:location_id", LocationDeleteController);
+LocationRouter.put("/:location_id", [Authmiddleware ,expressFileUpload()], LocationUpdateController);
+LocationRouter.delete("/:location_id", Authmiddleware, LocationDeleteController);
 
 module.exports = LocationRouter;

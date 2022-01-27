@@ -3,12 +3,12 @@ const expressFileUpload = require("express-fileupload");
 const Authmiddleware = require("../middlewares/AuthMiddleware")
 const ProductRouter = require("express").Router()
 
-ProductRouter.use(Authmiddleware)
+// ProductRouter.use(Authmiddleware)
 
  
-ProductRouter.post("/", expressFileUpload(), ProductCreatePostController);
+ProductRouter.post("/", [Authmiddleware,expressFileUpload()], ProductCreatePostController);
 ProductRouter.get("/", ProductGetController);
-ProductRouter.put("/:product_id", expressFileUpload(), ProductUpdateController);
-ProductRouter.delete("/:product_id", ProductDeleteController)
+ProductRouter.put("/:product_id", [Authmiddleware, expressFileUpload()], ProductUpdateController);
+ProductRouter.delete("/:product_id", Authmiddleware, ProductDeleteController)
 
 module.exports = ProductRouter;

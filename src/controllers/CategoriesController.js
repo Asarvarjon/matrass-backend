@@ -22,7 +22,7 @@ module.exports = class CategoriesController{
 
 
     static async CategoryCreatePostController(req, res, next) {
-        try {
+        try { 
             const data = await CategoryPostValidation(req.body, res.error);
 
             const category = await req.db.categories.create({
@@ -68,6 +68,7 @@ module.exports = class CategoriesController{
 
 
         } catch (error) {
+            console.log(error);
             next(error)
         }
     }

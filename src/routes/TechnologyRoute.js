@@ -3,11 +3,10 @@ const AuthMiddleware = require("../middlewares/AuthMiddleware");
 
 const TechnologyRouter = require("express").Router();  
 
-TechnologyRouter.use(AuthMiddleware);
 
 TechnologyRouter.get("/", TechnologyGetController);
-TechnologyRouter.post("/", TechnologyCreateController);
-TechnologyRouter.put("/:technology_id", TechnologyUpdateController);
-TechnologyRouter.delete("/:technology_id", TechnologyDeleteController);
+TechnologyRouter.post("/", AuthMiddleware, TechnologyCreateController);
+TechnologyRouter.put("/:technology_id", AuthMiddleware, TechnologyUpdateController);
+TechnologyRouter.delete("/:technology_id", AuthMiddleware, TechnologyDeleteController);
 
 module.exports = TechnologyRouter;
