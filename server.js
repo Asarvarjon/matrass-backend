@@ -12,7 +12,6 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 /// tests
 /// salom
-// nimdir
 // server function
 async function server() {
     try { 
