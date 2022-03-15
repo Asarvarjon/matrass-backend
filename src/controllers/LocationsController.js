@@ -70,6 +70,7 @@ module.exports = class LocationsController {
         try {
 
             const data = await LocationCreateValidations(req.body, res.error);
+            
             let photos = req.files?.photos;
 
             if(!Array.isArray(photos)) {
@@ -79,13 +80,13 @@ module.exports = class LocationsController {
             if(!photos) throw new res.error(400, "Files are not found!");
             if(photos?.length > 3) throw new res.error(400, "Files are to many!");
             
-            let photoNames = [];
-
-            for(let photo of photos) {
-                photoNames.push(photo.md5 + getExtension(photo.name));
-
-                await photo.mv(path.join(__dirname, "..", "public", "files", photo.md5 + getExtension(photo.name)))
-            }  
+            let photoNames = []; 
+ 
+                for(let photo of photos) {
+                    photoNames.push(photo.md5 + getExtension(photo.name));
+    
+                    await photo.mv(path.join(__dirname, "..", "public", "files", photo.md5 + getExtension(photo.name)))
+                }   
 
             const location = await req.db.locations.create({
                 location_name: data.location_name,
@@ -100,6 +101,7 @@ module.exports = class LocationsController {
                 message: "Location was added succesfully!"
             }) 
         } catch (error) {
+            console.log(error);
             next(error)
         }
     }
