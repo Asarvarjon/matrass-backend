@@ -10,9 +10,7 @@ const { errorHandlerMiddleware } = require("./src/helpers/CustomError");
 // server created
 const app = express();
 const PORT = process.env.PORT || 8080;
-
-
-
+/// tests
 // server function
 async function server() {
     try { 
