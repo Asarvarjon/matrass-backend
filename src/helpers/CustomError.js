@@ -11,6 +11,7 @@ module.exports.errorHandlerMiddleware = function errorHandlerMiddleware(
 	res,
 	next
 ) {
+console.log(error)
 	res.status(error.code || 500).json({
 		ok: false,
 		message: error.message || "Internal Server Error",
